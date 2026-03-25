@@ -100,7 +100,7 @@ export type Cita = {
   estado: string;
   asistencia: boolean;
   codigo_asistencia: string;
-  codigo_acceso_imagen_base64: string;
+  codigo_acceso_url: string;
   creado: string;
   puede_cancelarse: boolean;
 };

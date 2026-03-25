@@ -162,9 +162,10 @@ if (activeView === 'list') {
                       <Box my={3} display="flex" justifyContent="center">
                         <img
                           alt="qr"
-                          src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1024px-QR_code_for_mobile_English_Wikipedia.svg.png"
+                          src={item.codigo_acceso_url}
                           width={200}
                         />
+
                       </Box>
 
                       <Typography
