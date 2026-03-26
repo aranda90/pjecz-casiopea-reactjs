@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 // Hook para navegación entre rutas
 import { useNavigate } from 'react-router-dom';
 // Componentes de Material UI para el formulario y la interfaz de usuario
-import { Box, Button, TextField, Select, MenuItem, FormControl, InputLabel, Stack, Typography, InputAdornment, Alert, Card, CardContent, List, ListItemButton, ListItemIcon, ListItemText, Divider, CircularProgress, Avatar } from '@mui/material';
+import { Box, Button, TextField, Select, MenuItem, FormControl, InputLabel, Stack, Typography, InputAdornment, Alert, Card, CardContent, List, ListItemButton, ListItemIcon, ListItemText, Divider, CircularProgress } from '@mui/material';
 // Componentes de Material UI para el selector de fechas
 import { DateCalendar, LocalizationProvider } from '@mui/x-date-pickers';
 // Adaptador para utilizar dayjs con los componentes de fecha de Material UI
