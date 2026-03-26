@@ -356,6 +356,9 @@ const NewAppointment: React.FC = () => {
                       value={fecha}
                       onChange={newDate => setFecha(newDate ? dayjs(newDate) : null)}
                       shouldDisableDate={date => {
+                        const fechaString = dayjs(date).format('YYYY-MM-DD');
+                        const hoyString = dayjs().format('YYYY-MM-DD');
+                        if(fechaString === hoyString) return false; // Permitir seleccionar el día actual
                         if (loadingFechas || errorFechas) return true;
                         return !fechas.includes(dayjs(date).format('YYYY-MM-DD'));
                       }}
