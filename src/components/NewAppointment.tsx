@@ -324,8 +324,15 @@ const NewAppointment: React.FC = () => {
                     ))}
                     <Button
                       variant="outlined"
-                      onClick={() => setExpedientes([...expedientes, ''])}
+                      onClick={
+                        () => {
+                          if(expedientes.length < 5) {
+                            setExpedientes([...expedientes, ''])
+                          }
+                        }
+                      }
                       sx={{ mt: 1, color: '#648059' }}
+                      disabled={expedientes.length >= 5}
                     >
                       Agregar más expedientes
                     </Button>
@@ -421,21 +428,6 @@ const NewAppointment: React.FC = () => {
               </Button>
             </Stack>
           </form>
-         {/* <Box component="footer"
-            sx={{
-              position: 'fixed',
-              left: 0,
-              bottom: 0,
-              width: '100%',
-              bgcolor: '#fff',
-              boxShadow: '0 -2px 8px rgba(0,0,0,0.08)',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <img src="/images/logo-horizontal-600x200-negro.png" alt="Logo PJECZ" style={{ width: 220, height: 'auto', marginBottom: 4 }} />
-          </Box> */}
         </CardContent>
       </Card>
     </Box>

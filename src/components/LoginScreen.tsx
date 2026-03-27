@@ -28,7 +28,6 @@ const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [confirmEmail, setConfirmEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   // Estado para mostrar loader en el botón
   const [isLoading, setIsLoading] = useState(false);
   // Estado para mostrar mensajes de error o éxito
@@ -36,7 +35,6 @@ const LoginScreen = () => {
   const [messageType, setMessageType] = useState<'error' | 'success'>('error');
   // Estado para mostrar/ocultar contraseñas
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   // Estados para los campos de registro
   const [nombres, setNombres] = useState('');
@@ -116,6 +114,9 @@ const LoginScreen = () => {
           // Opcional: limpiar campos
           setNombres(''); setApellidoPrimero(''); setApellidoSegundo(''); setCurp(''); setTelefono('');
           setEmail(''); setConfirmEmail('');
+          setTimeout(() => {
+            setErrorMessage('');
+          }, 6000);
         } else {
           setErrorMessage(resp.message || 'No se pudo crear la cuenta');
           setMessageType('error');
@@ -136,7 +137,6 @@ const LoginScreen = () => {
     setEmail('');
     setConfirmEmail('');
     setPassword('');
-    setConfirmPassword('');
     setNombres('');
     setApellidoPrimero('');
     setApellidoSegundo('');

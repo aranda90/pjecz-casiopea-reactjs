@@ -16,7 +16,6 @@ import {
   AccessTime
 } from '@mui/icons-material';
 import { forgotPasswordValidate, RecuperacionValidarResponse } from '../actions/AuthActions';
-import { el } from 'date-fns/locale';
 
 
 const ConfirmarRecuperacion: React.FC = () => {

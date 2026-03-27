@@ -246,9 +246,9 @@ return (
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        position: citasOrdenadas.length <= 2 ? 'fixed' : 'relative', // Dinámico si hay pocas citas
-        bottom: 0,
-        width: '100%'
+        position: citasOrdenadas.length === 0 ? 'fixed' : 'relative',
+        bottom: citasOrdenadas.length === 0 ? 0 : 'auto',
+        width: '100%',
       }}
     >
       <img src="/images/logo-horizontal-600x200-negro.png" alt="Logo PJECZ" style={{ width: 220, height: 'auto' }} />
