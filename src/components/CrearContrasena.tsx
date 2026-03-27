@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Box, Typography, Card, Divider, Button, TextField, Avatar, CircularProgress, InputAdornment, IconButton } from "@mui/material";
 import { KeyOutlined, CheckCircle, ErrorOutline, Visibility, VisibilityOff } from "@mui/icons-material";
 import { terminarRegistro, terminarRecuperacion } from "../actions/AuthActions";
-import { set } from "lodash";
 
 const CrearContrasena: React.FC = () => {
   const location = useLocation();
