@@ -37,10 +37,23 @@ const ConfirmarRecuperacion: React.FC = () => {
               setUsuario(res.data);
               setMensaje(res.message || 'Recuperación validada exitosamente');
             } else if (res.success === false) {
-              setMensaje(res.message || 'No se pudo validar la recuperación');
-            } else {
-              setMensaje('Respuesta del servidor en formato inesperado');
-            }
+              
+              const errorMsg = res.message || '';
+              let mensajeDetallado = 'No se pudo validar la recuperación';
+              
+              if(errorMsg.includes('cadena')) {
+                mensajeDetallado = 'La cadena de validación no es inválida o ha expirado';
+              }else if(errorMsg.includes('caracter')) {
+                mensajeDetallado = 'La cadena de validación contiene caracteres no válidos';
+              }else if(errorMsg.includes('expirado')) {
+                mensajeDetallado = 'La cadena de validación ha expirado';
+              }else if(errorMsg.includes('formato')) {
+                mensajeDetallado = 'La cadena de validación tiene un formato inválido';
+              }else{
+                mensajeDetallado = res.message || 'No se pudo validar la recuperación';
+              }
+              setMensaje(mensajeDetallado);
+            } 
           } else {
             setMensaje('Respuesta inválida del servidor');
           }
@@ -48,11 +61,10 @@ const ConfirmarRecuperacion: React.FC = () => {
         .catch((err) => {
           setMensaje(err.message || 'Error al validar la recuperación');
         })
-        .finally(() => {
-          setCargando(false);
-        });
+        .finally(() => setCargando(false));
+
     } else {
-      setMensaje('Parámetros inválidos');
+      setMensaje('Parámetros inválidos o enlace incompleto');
       setCargando(false);
     }
   }, [searchParams]);

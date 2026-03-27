@@ -46,7 +46,7 @@ const ConfirmarRegistro: React.FC = () => {
       setMensaje("Parámetros inválidos");
       setCargando(false);
     }
-  }, [location.search]);
+  }, [location.search,navigate]);
 
   // Maneja la navegación asegurando que siempre se pasen id y cadena_validar
   const handleCrearContrasena = () => {

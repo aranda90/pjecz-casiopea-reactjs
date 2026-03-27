@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 // Hook para navegación entre rutas
 import { useNavigate } from 'react-router-dom';
 // Componentes de Material UI para el formulario y la interfaz de usuario
-import { Box, Button, TextField, Select, MenuItem, FormControl, InputLabel, Stack, Typography, InputAdornment, Alert, Card, CardContent, List, ListItemButton, ListItemIcon, ListItemText, Divider, CircularProgress, Avatar } from '@mui/material';
+import { Box, Button, TextField, Select, MenuItem, FormControl, InputLabel, Stack, Typography, InputAdornment, Alert, Card, CardContent, List, ListItemButton, ListItemIcon, ListItemText, Divider, CircularProgress } from '@mui/material';
 // Componentes de Material UI para el selector de fechas
 import { DateCalendar, LocalizationProvider } from '@mui/x-date-pickers';
 // Adaptador para utilizar dayjs con los componentes de fecha de Material UI
@@ -324,8 +324,15 @@ const NewAppointment: React.FC = () => {
                     ))}
                     <Button
                       variant="outlined"
-                      onClick={() => setExpedientes([...expedientes, ''])}
+                      onClick={
+                        () => {
+                          if(expedientes.length < 5) {
+                            setExpedientes([...expedientes, ''])
+                          }
+                        }
+                      }
                       sx={{ mt: 1, color: '#648059' }}
+                      disabled={expedientes.length >= 5}
                     >
                       Agregar más expedientes
                     </Button>
@@ -421,21 +428,6 @@ const NewAppointment: React.FC = () => {
               </Button>
             </Stack>
           </form>
-         {/* <Box component="footer"
-            sx={{
-              position: 'fixed',
-              left: 0,
-              bottom: 0,
-              width: '100%',
-              bgcolor: '#fff',
-              boxShadow: '0 -2px 8px rgba(0,0,0,0.08)',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <img src="/images/logo-horizontal-600x200-negro.png" alt="Logo PJECZ" style={{ width: 220, height: 'auto', marginBottom: 4 }} />
-          </Box> */}
         </CardContent>
       </Card>
     </Box>

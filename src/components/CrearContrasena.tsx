@@ -83,16 +83,24 @@ const CrearContrasena: React.FC = () => {
       if (isRecuperacion) {
         // Usar endpoint de recuperación de contraseña
         res = await terminarRecuperacion({ id, cadena_validar, password });
-        setMensaje(res.message || "¡Contraseña recuperada exitosamente!");
+        // setMensaje(res.message || "¡Contraseña recuperada exitosamente!");
       } else {
         // Usar endpoint de registro de usuario
         res = await terminarRegistro({ id, cadena_validar, password });
-        setMensaje(res.message || "¡Contraseña creada exitosamente!");
+        // setMensaje(res.message || "¡Contraseña creada exitosamente!");
       }
-      setSuccess(true); // Indica que la operación fue exitosa
-      setTimeout(() => navigate("/", { state: { id, cadena_validar } }), 2500);
+      if(res.success) {
+        
+        setMensaje(res.message || (isRecuperacion ? "¡Contraseña recuperada exitosamente!" : "¡Contraseña creada exitosamente!"));
+        setSuccess(true); // Indica que la operación fue exitosa
+        setTimeout(() => navigate("/", { state: { id, cadena_validar } }), 2500);
+      }else{
+
+        setMensaje(res.message || "No se pudo crear la contraseña ya que no debe contener caracteres especiales.");
+        setSuccess(false); // Indica que la operación no fue exitosa
+      }
     } catch (err: any) {
-      setMensaje(err.message || "No se pudo crear la contraseña.");
+      setMensaje(err.message || "Error inesperado.");
       setSuccess(false); // Indica que la operación no fue exitosa
     } finally {
       setLoading(false); // Indica que la operación terminó
