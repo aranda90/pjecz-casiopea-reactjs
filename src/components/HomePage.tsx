@@ -165,8 +165,8 @@ return (
                       display="block"
                       textAlign="center"
                       mt={1}
-                      onClick={() => handleOpenDialog(item.id)}
-                      sx={{ color: '#555', cursor: 'pointer' }} // Añadido cursor pointer
+                      onClick={() => item.puede_cancelarse && handleOpenDialog(item.id)}
+                      sx={{ color: '#555', cursor: item.puede_cancelarse ? 'pointer' : 'default' }} // Añadido cursor pointer
                     >
                       Código: <br /> {item.id}
                     </Typography>
